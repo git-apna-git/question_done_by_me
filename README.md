@@ -34,11 +34,13 @@ class Solution {
          i=j=k=0;// I was mistaking here for that i had done i,j,k=0 which was wrong 
         while(i<n1&&j<n2&&k<n3){
             if(arr1[i]==arr2[j]&&arr2[j]==arr3[k]){
+                
                 if(arr1[count]!=arr1[i]){// this was to handle the duplicates 
                     ans.push_back(arr1[i]);
                     count= i;
                 }
              i++;j++;k++;
+                
             }else if(arr1[i]<arr2[j]){
                 i++;
             }else if(arr2[j]<arr3[k]){
