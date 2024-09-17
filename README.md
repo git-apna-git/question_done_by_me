@@ -22,9 +22,12 @@ class Solution {
 
 
 finding the common in the 3 sorted array done in the geeks for geeks --https://www.geeksforgeeks.org/problems/common-elements1132/1
+
+
 class Solution {
   public:
     // Function to find common elements in three arrays.
+    
     vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
                                vector<int> &arr3) {
         // Code Here
