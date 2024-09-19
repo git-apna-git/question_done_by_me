@@ -1,4 +1,4 @@
-find the first repeating element in the array and return its index -- i did this in the geeks for geeks https://www.geeksforgeeks.org/problems/first-repeating-element4018/1
+1.find the first repeating element in the array and return its index -- i did this in the geeks for geeks https://www.geeksforgeeks.org/problems/first-repeating-element4018/1
 // User function template in C++
 
 class Solution {
@@ -21,9 +21,8 @@ class Solution {
 };
 
 
-finding the common in the 3 sorted array done in the geeks for geeks --https://www.geeksforgeeks.org/problems/common-elements1132/1
-
-
+2. finding the common in the 3 sorted array done in the geeks for geeks --https://www.geeksforgeeks.org/problems/common-elements1132/1
+   
 class Solution {
   public:
     // Function to find common elements in three arrays.
@@ -53,5 +52,79 @@ class Solution {
             }
         }
         return ans;
+    }
+};
+
+3.Add two numbers represented by two array in gfgs  ---https://www.geeksforgeeks.org/problems/add-two-numbers-represented-by-two-arrays2408/1
+
+class Solution {
+  public:
+    string calc_Sum(vector<int>& arr1, vector<int>& arr2) {
+        // Complete the function
+        
+        int carry =0; 
+        string ans; 
+        int i=arr1.size()-1;
+        int j=arr2.size()-1; 
+        while(i>=0&& j>=0){
+            int x = arr1[i]+arr2[j]+carry;
+            int digit= x%10;
+            ans.push_back(digit +'0');
+            carry = x/10;
+            i--,j--;
+        }
+        
+         while(i>=0){
+            int x = arr1[i]+ 0 +carry;
+            int digit= x%10;
+            ans.push_back(digit +'0');
+            carry = x/10;
+            i--;
+        }
+        
+         while(j>=0){
+            int x =0+arr2[j]+carry;
+            int digit= x%10;
+            ans.push_back(digit +'0');
+            carry = x/10;
+            j--;
+        }
+        
+        if(carry){
+            ans.push_back(carry + '0');
+        }
+        while(ans[ans.size()-1]=='0'){
+            ans.pop_back();
+        }
+        reverse(ans.begin(), ans.end());
+        return ans; 
+        }
+};
+
+4.Factorial of Larger number  gfgs --https://www.geeksforgeeks.org/problems/factorials-of-large-numbers2508/1
+
+class Solution {
+public:
+    vector<int> factorial(int N){
+    
+        // code here
+        vector< int> a; 
+        a.push_back(1);
+        int carry =0;int x=0; 
+        for(int i=2; i<=N;i++){
+            
+            for(int j=0;j< a.size();j++){
+                x=a[j]*i+carry;
+                a[j]=x%10;
+                carry= x/10;
+            }
+            while(carry){
+               
+                a.push_back(carry%10);
+                carry=carry/10;
+            }
+        }
+        reverse(a.begin(),a.end());
+        return a; 
     }
 };
