@@ -128,3 +128,40 @@ public:
         return a; 
     }
 };
+
+
+1047. Remove All Adjacent Duplicates In String---https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/submissions/1400500217/
+
+1048. class Solution {
+public:
+
+    string removeDuplicates(string s) {
+        // this approach is bad because pop back function removes elements from the last , not at the same index
+        // int count=0;
+        // for(int i=0;i<s.length()-1;i++){
+        //     if(count>0){
+        //         i=0;
+        //     }
+        //     if(s[i]==s[i+1]){
+        //         s.pop_back();
+        //         count++;
+        //     }
+        // }
+        // return s; 
+        string ans ="";
+        int i=0;
+        while(i<s.length()){
+            if(ans.length()>0){
+                if(ans[ans.length()-1]==s[i]){
+                    ans.pop_back();
+                }else{
+                    ans.push_back(s[i]);
+                }
+            }else{
+                ans.push_back(s[i]);
+            }
+            i++;
+        }
+        return ans;
+    }
+};
