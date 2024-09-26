@@ -181,3 +181,38 @@ public:
     }
     
 };
+
+680. Valid Palindrome II  https://leetcode.com/problems/valid-palindrome-ii/description/
+
+class Solution {
+public:
+
+    bool checkPalindrome(string s, int i, int j){
+        while(i<=j){
+            if(s[i]!=s[j]){
+                return false;
+            }else{
+                s[i]==s[j];
+                 i++;
+                j--;
+                           }
+
+        }
+        return true;
+    }
+    bool validPalindrome(string s) {
+        int i=0;int n= s.length();
+        int j=n-1;
+        while(i<=j){
+            if(s[i]==s[j]){
+                // return true;// i made this mistake
+                i++;
+                j--;
+            }else{
+                return checkPalindrome(s, i+1, j)||checkPalindrome(s,i,j-1);
+            }
+        }
+        return true;
+        
+    }
+};
