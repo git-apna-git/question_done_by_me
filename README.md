@@ -216,3 +216,33 @@ public:
         
     }
 };
+539. Minimum Time Difference----https://leetcode.com/problems/minimum-time-difference/description/
+class Solution {
+public:
+
+    int findMinDifference(vector<string>& timePoints) {
+        // step one is the conversion of the string to integer and storing 
+        vector<int>minutes;int hour=0;int minute =0,time=0;int ans= INT_MAX;int diff=0;
+        
+        for(int i=0;i<timePoints.size();i++){
+            // hour= stoi(timePoints.substr(1,2));// I can't do directly this 
+            // min= stoi(timePoints.substr(4,2)); // first take the singal string from timePoints, then find the hour and min out of this.
+            string curr = timePoints[i];
+            hour= stoi(curr.substr(0,2));// "23:59" here the " double inverted isn't the character so start with the 0 index;
+            minute= stoi(curr.substr(3,2));
+            time = hour*60+minute;
+           minutes.push_back(time);
+        }
+        sort(minutes.begin(), minutes.end());
+
+       for(int i=0;i<minutes.size()-1;i++){
+        diff = minutes[i+1]-minutes[i];
+            ans = min(diff, ans);
+       }
+
+    // something is missing 
+        diff= (minutes[0]+1440)-minutes[minutes.size()-1];
+        ans = min(diff, ans);
+        return ans;
+    }
+};
