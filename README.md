@@ -130,9 +130,9 @@ public:
 };
 
 
-1047. Remove All Adjacent Duplicates In String---https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/submissions/1400500217/
+5-  1047. Remove All Adjacent Duplicates In String---https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/submissions/1400500217/
 
-1048. class Solution {
+ class Solution {
 public:
 
     string removeDuplicates(string s) {
@@ -166,7 +166,7 @@ public:
     }
 };
 
-1047. Remove All Adjacent Duplicates In String---https://leetcode.com/problems/remove-all-occurrences-of-a-substring/
+6   1047. Remove All Adjacent Duplicates In String---https://leetcode.com/problems/remove-all-occurrences-of-a-substring/
       class Solution {
 public:
 
@@ -182,7 +182,7 @@ public:
     
 };
 
-680. Valid Palindrome II  https://leetcode.com/problems/valid-palindrome-ii/description/
+7    680. Valid Palindrome II  https://leetcode.com/problems/valid-palindrome-ii/description/
 
 class Solution {
 public:
@@ -216,7 +216,7 @@ public:
         
     }
 };
-539. Minimum Time Difference----https://leetcode.com/problems/minimum-time-difference/description/
+8   539. Minimum Time Difference----https://leetcode.com/problems/minimum-time-difference/description/
 class Solution {
 public:
 
@@ -247,7 +247,7 @@ public:
     }
 };
 
-242. Valid Anagram---https://leetcode.com/problems/valid-anagram/description/
+9    242. Valid Anagram---https://leetcode.com/problems/valid-anagram/description/
 
 class Solution {
 public:
@@ -280,7 +280,7 @@ public:
     return true;
     }
 };
-917. Reverse Only Letters---https://leetcode.com/problems/reverse-only-letters/description/
+10   917. Reverse Only Letters---https://leetcode.com/problems/reverse-only-letters/description/
 class Solution {
 public:
 
@@ -300,5 +300,38 @@ public:
         }
        
         return s; 
+    }
+};
+11  14. Longest Common Prefix---https://leetcode.com/problems/longest-common-prefix/description/
+class Solution {
+public:
+
+    string longestCommonPrefix(vector<string>& strs) {
+        int i=0;
+        string ans="";
+        
+        while(true){
+            cout<<"ram";
+            char char_str='\0';
+           for(auto str : strs){
+             if(i>=str.size()){
+                char_str= '\0';
+                break;
+                }
+                if(char_str=='\0'){
+                    char_str=str[i];
+                }else if(char_str!= str[i]){
+                    char_str=0;
+                    break; 
+                }
+           }
+            
+            if(char_str=='\0'){
+                break;
+            }
+            ans.push_back(char_str);
+            i++;
+        }
+        return ans;
     }
 };
