@@ -280,3 +280,25 @@ public:
     return true;
     }
 };
+917. Reverse Only Letters---https://leetcode.com/problems/reverse-only-letters/description/
+class Solution {
+public:
+
+    string reverseOnlyLetters(string s) {
+        int ch= '!';//97 122 65 90
+        cout<<ch;
+        int i=0;int j=s.size()-1;
+        while(i<j){// you can check the alphabet is or not by isalpha stl function 
+            if((s[i]>=65&&s[i]<=90||s[i]>=97&&s[i]<=122)&&(s[j]>=65&&s[j]<=90||s[j]>=97&&s[j]<=122)){
+                swap(s[i],s[j]);
+                i++;j--;
+            }else if(!(s[i]>=65&&s[i]<=90||s[i]>=97&&s[i]<=122)){
+                i++;
+            }else if(!(s[j]>=65&&s[j]<=90||s[j]>=97&&s[j]<=122)){
+                j--;
+            }
+        }
+       
+        return s; 
+    }
+};
