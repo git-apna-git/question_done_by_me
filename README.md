@@ -246,3 +246,37 @@ public:
         return ans;
     }
 };
+
+242. Valid Anagram---https://leetcode.com/problems/valid-anagram/description/
+
+class Solution {
+public:
+
+    bool isAnagram(string s, string t) {
+    //     // done by me in one attempt
+    //     sort(s.begin(), s.end());
+    //     sort(t.begin(), t.end());
+    // //  for(int i=0;i<s.length();i++){
+        
+    // //  }   
+    // if(s.compare(t)==0){
+    //     return true;
+    // }
+    //  return false;
+    
+    //second method
+    int hashTable[256]={0};
+    for(int i=0;i<s.size();i++){
+        hashTable[s[i]]++;
+    }
+    for(int i=0;i<t.size();i++){
+        hashTable[t[i]]--;
+    }
+    for(int i=0;i<256;i++){
+        if(hashTable[i]!=0){
+            return false;// you can't return the true here and should not use the concept of the ==0 but should use !=0 and then return the false becuase we are storing the value and if the two string are not equal then it is not going to be 0 so in that casee we have to return the false,  case1 
+        }
+    }
+    return true;
+    }
+};
