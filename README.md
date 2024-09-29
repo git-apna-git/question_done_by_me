@@ -381,3 +381,45 @@ public:
         return true;
     }
 };
+14  767. Reorganize String  --https://leetcode.com/problems/reorganize-string/description/
+class Solution {
+public:
+
+    string reorganizeString(string s) {
+        int hash[26]={0};char curr_char=0;
+        for(int i=0;i<s.size();i++){
+            hash[s[i]-'a']++;
+        }
+        int max =INT_MIN;
+        for(int i=0; i<26;i++){
+            if(hash[i]>max){
+                max=hash[i];
+            curr_char = i+'a';
+            // cout<<curr_char;
+            }
+        }
+        int index =0;
+        while(max>0&&index<s.length()){// max>=0 i have done this and also i have done the index<=s.size()
+            
+            s[index]=curr_char;
+            index=index+2;
+            max--;
+        }
+        if(max!=0){
+            return "";
+        }
+        hash[curr_char-'a']=0;
+        // putting in the rest of the char into the string ;
+        
+        for(int i=0;i<26;i++){
+           while(hash[i]>0){
+                index=index>=s.size()?1:index;
+                s[index]=i+'a';
+                hash[i]--;
+                index=index+2;
+
+            }
+        }
+        return s;
+    }
+};
