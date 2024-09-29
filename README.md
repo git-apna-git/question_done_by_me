@@ -363,6 +363,7 @@ public:
 13   https://leetcode.com/problems/isomorphic-strings/submissions/    ---205. Isomorphic Strings
 class Solution {
 public:
+
     bool isIsomorphic(string s, string t) {
         int hash[256]= {0};// mapping of each char of language 's' to language 't'
         bool istCharsMapped[256]= {0};// stores if t[i] char already mapped with s[i].
