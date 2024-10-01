@@ -449,3 +449,24 @@ public:  // later doing it with the dynamic programming I have done this now by 
         return ans;
     }
 };
+16  49. Group Anagrams   https://leetcode.com/problems/group-anagrams/description/
+class Solution {
+public:
+
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>>ans;
+        map<string,vector<string>>mp;// i had made the mistake her that why though i was calling the right way , but it was not getting matching with what i was passing .
+        for(auto str: strs){
+            string st= str;
+            cout<<st;
+            sort(st.begin(),st.end());
+            mp[st].push_back(str);
+        }
+
+            for(auto i=mp.begin();i!=mp.end();i++){
+                ans.push_back(i->second);
+            }
+
+        return ans; 
+    }
+};
