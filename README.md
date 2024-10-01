@@ -423,3 +423,29 @@ public:
         return s;
     }
 };
+15   5 Longest Palindromic Substring    https://leetcode.com/problems/longest-palindromic-substring/
+class Solution {
+public:  // later doing it with the dynamic programming I have done this now by the brute force
+
+        bool isPalindrome(string&s, int i, int j){
+            while(i<j){
+                if(s[i]!=s[j]){
+                    return false;
+                }
+                i++;j--;
+            }
+            return true;
+        }
+    string longestPalindrome(string s) {
+        string ans= "";
+        for(int i=0; i<s.size();i++){
+            for(int j=i;j<s.size();j++){
+                if(isPalindrome(s,i,j)){
+                    string t= s.substr(i,j-i+1);
+                    ans= t.size()>ans.size()?t:ans; 
+                }
+            }
+        }
+        return ans;
+    }
+};
