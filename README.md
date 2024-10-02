@@ -473,6 +473,7 @@ public:
 17  . Find the Index of the First Occurrence in a String(28)    https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
 class Solution {
 public:
+
     int strStr(string haystack, string needle) {
         // done by me method 1
         // int ans= haystack.find(needle);
@@ -491,3 +492,67 @@ public:
         return -1;
     }
 };
+18  204. Count Primes    https://leetcode.com/problems/count-primes/
+class Solution {
+public:
+
+    int countPrimes(int n) {
+        // vector<long long int>v(n,1);
+        // long long int count=0;
+        // if(n==1||n==0){
+        //     return false;
+        // }
+        // for(long long int i=2;i<n;i++){
+        //     if(v[i]==1){
+        //         for(long long int j=i*i;j<n;j+=i){
+        //             v[j]=0;// you are mistaking here why are you doing v[i]you should v[j]
+        //     }
+        //     }
+        // }
+        // for(int i=2;i<n;i++){
+        //     if(v[i]==1){
+        //         count++;
+        //     }
+        // }
+        // return count;
+
+         vector< int>v(n,1);
+         int count=0;
+        if(n==1||n==0){
+            return false;
+        }
+        for(int i=2;i<n;i++){
+
+            if(v[i]==1){
+                int j=2*i;// here i am not doing the long long int and it is alternative to avoid the long long
+                for( ;j<n;j=j+=i){
+                    v[j]=0;// you are mistaking here why are you doing v[i]you should v[j]
+            }
+            }
+            
+        }
+        for(int i=2;i<n;i++){
+            if(v[i]==1){
+                count++;
+            }
+        }
+        return count;
+        
+    }
+};
+19   GCD of two number (gfgs)   https://www.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1
+class Solution {
+  public:
+  
+    int gcd(int a, int b) {
+        // code here
+        while(a>0&&b>0){
+            if(a>b){
+                a=a-b;
+            }else
+            b=b-a;
+        }
+        return a==0?b:a;
+    }
+};
+
