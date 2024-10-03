@@ -556,3 +556,28 @@ class Solution {
     }
 };
 
+20    8. String to Integer (atoi)   https://leetcode.com/problems/string-to-integer-atoi/
+class Solution {
+public:
+
+    int myAtoi(string s) {
+        int ans=0; int i=0; int sign=1;
+        while(s[i]==' '){
+            i++;
+        }
+        while(i<s.size()&&(s[i]=='+'||s[i]=='-')){
+            sign=s[i]=='+'?1:(-1);
+            i++;
+            break;
+        }
+        while(i<s.size()&&isdigit(s[i])){
+            if(ans>INT_MAX/10||ans==INT_MAX/10&&s[i]>'7'){// this is used to go till the extent our number is near to the greatest limit.
+                return sign ==-1?INT_MIN: INT_MAX;
+            }
+                ans= ans*10 + (s[i]-'0');
+            i++;
+        }
+        return ans*sign;
+    }
+};
+
