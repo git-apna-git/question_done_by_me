@@ -581,3 +581,93 @@ public:
     }
 };
 
+21    443. String Compression  https://leetcode.com/problems/string-compression/
+class Solution {
+public:
+// this is done by me but not as efficient solution so i am sharing below the more efficient.
+
+    int compress(vector<char>& chars) {
+        if(chars.size()==0){
+            return 0;
+        }
+        int prev =chars[0];int count=1;
+        int index=0;
+        for(int i=1;i<chars.size();i++){
+            if(chars[i]==prev){
+                count++;
+            }else{
+                chars[index]=prev;index++;
+                int start= index;
+                if(count>1){
+                    while(count){  chars[index++]=count%10+'0'; 
+                     count= count/10;}
+                       }
+                       reverse(chars.begin()+start, chars.begin()+index);
+            count=1;   
+            }
+              prev=chars[i];
+        }
+       
+        chars[index++]= prev;
+         int start= index;
+       while(count>1){
+            while(count){  chars[index++]=count%10+'0'; 
+            count= count/10;}
+                       }
+                        reverse(chars.begin()+start, chars.begin()+index);
+        return index;
+        
+    }
+};
+
+// this is the another solution 
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int ans = 0;
+
+        // iterate through input vector using i pointer
+        for (int i = 0; i < chars.size();) {
+            const char letter = chars[i]; // current character being compressed
+            int count = 0; // count of consecutive occurrences of letter
+
+            // count consecutive occurrences of letter in input vector
+            while (i < chars.size() && chars[i] == letter) {
+                ++count;
+                ++i;
+            }
+
+            // write letter to compressed vector
+            chars[ans++] = letter;
+
+            // if count is greater than 1, write count as string to compressed vector
+            if (count > 1) {
+                // convert count to string and iterate over each character in string
+                for (const char c : to_string(count)) {
+                    chars[ans++] = c;
+                }
+            }
+        }
+
+        // return length of compressed vector
+        return ans;
+    }
+};
+22  12. Integer to Roman  https://leetcode.com/problems/integer-to-roman/
+class Solution {
+public:
+
+    string intToRoman(int num) {
+        string ans="";
+        string  roman[] = {"M", "CM", "D" , "CD","C", "XC", "L","XL","X","IX","V","IV","I" };
+        int value[]={1000,900,500,400,100,90,50,40,10,9,5,4,1};
+        int n =sizeof(value) / sizeof(int);
+        for(int i=0;i<n;i++){
+            while(num>=value[i]){
+                ans=ans+roman[i];
+                num=num-value[i];
+            }
+        }
+        return ans;
+    }
+};
