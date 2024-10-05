@@ -703,3 +703,54 @@ public:
 
     }
 };
+24  532. K-diff Pairs in an Array   https://leetcode.com/problems/k-diff-pairs-in-an-array/
+class Solution {
+public:
+
+    int bs(vector<int>nums, int start, int x){
+             int end= nums.size()-1;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(nums[mid]==x){
+                return mid;
+            }else if(x>nums[mid]){
+            start = mid+1;}
+            else{
+                end = mid-1;       
+                     }
+                       }
+                       return -1;
+        }
+           
+    int findPairs(vector<int>& nums, int k) {
+        // sort(nums.begin(),nums.end());// sorting the array 
+        // int i=0,j=1;
+        // set<pair<int,int>>ans; // making the pair to remove the duplicates 
+        // while(j<nums.size()){
+        //     int diff = nums[j]-nums[i];// for storing the difference
+        //     if(diff==k){
+        //         ans.insert({nums[i],nums[j]});// for inserting the pairs. 
+        //         ++i,++j;
+        //     }else if (diff>k){// if greater than the diff
+        //         i++;
+        //     }else{// if less
+        //         j++;
+
+        //     }
+        //     if(i==j){// if pointing to the same element
+        //         j++;
+        //     }
+        // }
+        // return ans.size();
+
+     sort(nums.begin(),nums.end());// sorting the array 
+    set<pair<int,int>>ans;
+    for(int i=0;i<nums.size();i++){
+    if(bs(nums,i+1,nums[i]+k)!=-1){
+        ans.insert({nums[i],nums[i]+k});
+    }
+     }
+     return ans.size();
+    }
+        
+};
