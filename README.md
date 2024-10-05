@@ -671,3 +671,35 @@ public:
         return ans;
     }
 };
+23  658. Find K Closest Elements    https://leetcode.com/problems/find-k-closest-elements/
+class Solution {
+public:
+
+    vector<int>twoPointer(vector<int>& arr, int k, int x){
+        int l=0,z=arr.size()-1;
+        // for(int i=0;i<arr.size();i++){
+
+        // }
+        while(z-l>=k){
+            if(x-arr[l]>arr[z]-x){
+                l++;
+            }else{
+                z--;
+            }
+          cout<<"ram";
+        }
+        //  vector<int>ans;
+        //  for(int i=l;i<=z;i++){
+        //     ans.push_back(arr[i]);
+
+        //  }
+        //  return ans; another way of returning the ouput without using the extra space.
+
+        return vector<int>(arr.begin()+l, arr.begin()+z+1);
+    }
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        // return vector<int>twoPointer(vector<int> arr, int k, int x); the mistake i was doing 
+        return twoPointer(arr,k, x); //the mistake i was doing 
+
+    }
+};
